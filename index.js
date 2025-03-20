@@ -7,6 +7,7 @@ import mongoose from 'mongoose';
 
 // Routes
 import userRouter from './routes/user.routes.js';
+import locationRouter from './routes/location.routes.js';
 
 // to set the environment variables from the .env file
 // the .env file should be in the root folder
@@ -48,6 +49,7 @@ app.get('/', (req, res) => {
 
 // API routes
 app.use('/weather-api/user', userRouter);
+app.use('/weather-api/location', locationRouter);
 
 
 // Global error handling

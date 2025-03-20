@@ -1,9 +1,16 @@
 import mongoose from "mongoose";
-
 /*
     to make the field unique for the DB
     unique: true,
 */
+const locationID = new mongoose.Schema({
+    locationId: {
+        type: mongoose.ObjectId,
+        ref: "Location",
+        unique: true
+    }
+});
+
 const userSchema = new mongoose.Schema({
     userName: {
         type: String,
@@ -22,7 +29,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    locations: []
+    locations: [{
+        type: mongoose.ObjectId,
+        ref: "Location",
+    }]  //[locationID]
 }, {
     // For createdAt and updatedAt fields will be added to the schema
     timestamps: true,
@@ -32,7 +42,5 @@ const userSchema = new mongoose.Schema({
 // can make it 1 or -1 to make it ascending or descending
 // userSchema.index({ userName: 1 });
 // userSchema.index({ email: 1 });
-
-
 
 export const User = mongoose.model('User', userSchema);

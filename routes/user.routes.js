@@ -187,8 +187,6 @@ userRouter.post("/:userId/add-city", async (req, res) => {
 
 export default userRouter;
 
-
-
 // Helper Function
 async function getOrAddCity(city, state, country) {
     let location = await Location.findOne({ city: city });
